@@ -28,7 +28,7 @@ for ($i=1;$i<=count($fs);$i++) {
 /***
 *find when we has a .txt file and display filename
 */
-    if(preg_match("/[\s,\d]*\.txt/i",$fs[$i])) {
+    if(preg_match("/[\s,\d]*\.txt/i",$fs[$i]) and (strpos($fs[$i],".txt")==strlen($fs[$i])-4)) {
         echo $fs[$i]."<br />";
     }
 }
