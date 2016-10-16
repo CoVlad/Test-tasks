@@ -1,0 +1,24 @@
+
+Query:
+CREATE TABLE `link` (
+        `data_id` int(11) NOT NULL,
+        `info_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+could be added  query:
+ALTER TABLE  `link` ADD INDEX (  `data_id` ,  `info_id` ) ;
+
+because so it find data more faster
+
+Query:
+SELECT * FROM data,link,info WHERE link.info_id = info.id AND link.data_id = data.id
+
+could be : 
+SELECT name, info.desc, data.date, value
+FROM (
+info
+INNER JOIN link ON link.info_id = info.id
+)
+INNER JOIN data ON link.data_id = data.id
+
+because so it faster (no asterisk -* and join by indexed column) and readable
